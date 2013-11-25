@@ -6,7 +6,10 @@ title: Git at lunch
 
 # GIT
 
-## Introduction easy flow
+<br>
+
+## At lunch - the basics
+<br>
 
 > Benny Thomas @ Sandviks AS
 
@@ -14,9 +17,21 @@ title: Git at lunch
 
 > Twitter@VirtueMe
 
-> Using mdpress/impress.js
+---
+= id="about-presentation"
 
-> git clone https://github.com/VirtueMe/gitatlunch.git (needs ruby, mdpress(*gem*), nodejs and grunt-cli(*npm -g*))
+# Tools used
+
+<br>
+
+> mdpress/impress.js Goody
+
+<br>
+
+> git clone https://github.com/VirtueMe/gitatlunch.git
+
+> ruby, mdpress(*gem*), nodejs and grunt-cli(*npm -g*))
+
 
 
 ---
@@ -87,6 +102,15 @@ __feel free to contact me afterwards for advanced questions__
   * hidden <b class="hiddengem"> .git </b> folder
 * needs to be intialized or cloned.
 * works like a database
+
+---
+= id="start"
+
+# The Basics
+
+<br>
+
+# Get dirty
 
 ---
 = id="commands"
@@ -474,6 +498,7 @@ commit d8b7c8594a2b2da060b2173fa1939d7d3c918bf6
 ```bash
 E:\project> git checkout master
 Switched to branch 'master'
+E:\project>
 ```
 * check difference
 
@@ -571,6 +596,7 @@ E:\project>
 = id="remotes"
 
 # Remotes
+
 
 ---
 = id="upstreams"
