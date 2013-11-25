@@ -1,6 +1,18 @@
 {
   "name": "gitandlunch",
-  "version": "0.0.0",
+  "description": "A presentation to give the basics to people new to Git.",
+  "version": "0.0.2",
+  "author": "Benny Thomas <jan.thomas@speilbildet.com> (https://twitter.com/VirtueMe)",
+  "licenses" : [
+    { 
+      "type" : "MIT"
+      , "url" : "http://github.com/VirtueMe/LICENSE"
+    }
+  ],
+  "repository" : {
+    "type" : "git"
+  , "url" : "http://github.com/VirtueMe/gitatlunch.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
