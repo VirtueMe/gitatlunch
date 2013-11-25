@@ -16,6 +16,9 @@ title: Git at lunch
 
 > Using mdpress/impress.js
 
+> git clone https://github.com/VirtueMe/gitatlunch.git (needs ruby)
+
+
 ---
 = id="pre" data-x="1000" data-scale="2"
 
