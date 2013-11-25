@@ -16,7 +16,7 @@ title: Git at lunch
 
 > Using mdpress/impress.js
 
-> git clone https://github.com/VirtueMe/gitatlunch.git (needs ruby)
+> git clone https://github.com/VirtueMe/gitatlunch.git (needs ruby, mdpress(*gem*), nodejs and grunt-cli(*npm -g*))
 
 
 ---
