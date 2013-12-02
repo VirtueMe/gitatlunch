@@ -1,12 +1,13 @@
-'use strict';
+//var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 
-// borrowed from Angular generator
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
-};
+/*global module:false */
+module.exports = function (grunt) {
+  'use strict';
 
-module.exports = function(grunt) {
+  // borrowed from Angular generator
+  var mountFolder = function (connect, dir) {
+    return connect.static(require('path').resolve(dir));
+  };
 
   // load grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -16,19 +17,43 @@ module.exports = function(grunt) {
       options: {
         hostname: 'localhost',
         port: 9000,
-        base: 'gitandlunch'
+        livereload: true
       },
-      livereload: {
+      first: {
         options: {
+          base: 'gitandlunch',
           middleware: function (connect) {
             return [
-              lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'gitandlunch')
             ];
-          }
+          },
+          livereload: true
         }
       },
+      second: {
+        options: {
+          base: 'gitdistributed',
+          middleware: function (connect) {
+            return [
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'gitdistributed')
+            ];
+          },
+          open: true,
+          livereload: true
+        }
+      },
+    },
+    copy: {
+      first: {
+        src: 'js/*',
+        dest: 'gitandlunch/'
+      },
+      second: {
+        src: 'js/*',
+        dest: 'gitdistributed/'
+      }
     },
     watch: {
       mdpress: {
@@ -37,38 +62,57 @@ module.exports = function(grunt) {
           'themes/{,*/}*.html',
           'themes/{,*/}*.css'
         ],
-        tasks: ['shell:compile']
+        tasks: ['shell:compile', 'copy:first'],
+        options: {
+          livereload: true
+        }
       },
-      livereload: {
+      mdpress2: {
         files: [
-          'gitandlunch/index.html',
-          'gitandlunch/css/{,*/}*.css'
+          'gitdistributed.md',
+          'themes/{,*/}*.html',
+          'themes/{,*/}*.css'
         ],
-        tasks: ['livereload']
-      }
-    },
-    open: {
-      server: {
-        url: 'http://localhost:9000'
+        tasks: ['shell:compile2', 'copy:second'],
+        options: {
+          livereload: true,
+          open: true
+        }
+      },
+      gitdistributed: {
+        files: [
+          'gitdistributed/index.html'
+        ],
+        options: {
+          livereload: true,
+          open: true
+        }
       }
     },
     shell: {
       compile: {
         command : 'mdpress gitandlunch.md -s mytheme'
+      },
+      compile2: {
+        command : 'mdpress gitdistributed.md -s mytheme'
       }
     }
   });
 
-  // For livereload
-  grunt.renameTask('regarde', 'watch');
   grunt.registerTask('compile', ['shell:compile']);
   grunt.registerTask('default', ['compile']);
   grunt.registerTask('server', [
     'shell:compile',
-    'livereload-start',
-    'connect:livereload',
-    'open',
-    'watch',
+    'copy:first',
+    'connect:first',
+    'watch:mdpress',
   ]);
 
+  grunt.registerTask('server2', [
+    'shell:compile2',
+    'copy:second',
+    'connect:second',
+    'watch:mdpress2',
+    'watch:gitdistributed'
+  ]);
 };

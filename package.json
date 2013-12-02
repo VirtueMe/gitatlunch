@@ -3,26 +3,24 @@
   "description": "A presentation to give the basics to people new to Git.",
   "version": "0.0.2",
   "author": "Benny Thomas <jan.thomas@speilbildet.com> (https://twitter.com/VirtueMe)",
-  "licenses" : [
-    { 
-      "type" : "MIT"
-      , "url" : "http://github.com/VirtueMe/LICENSE"
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/VirtueMe/LICENSE"
     }
   ],
-  "repository" : {
-    "type" : "git"
-  , "url" : "http://github.com/VirtueMe/gitatlunch.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/VirtueMe/gitatlunch.git"
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-livereload": "~0.1.2",
-    "grunt-contrib-watch": "~0.4.3",
-    "grunt-contrib-connect": "~0.2.0",
-    "grunt-contrib-copy": "~0.4.0",
-    "grunt-open": "~0.2.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
     "grunt-shell": "~0.2.2",
-    "grunt-regarde": "~0.1.1",
-    "matchdep": "~0.1.1"
+    "matchdep": "~0.1.1",
+    "generator-mdpress": "~0.2.0"
   }
 }
