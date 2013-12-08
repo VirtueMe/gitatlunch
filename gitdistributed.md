@@ -84,10 +84,24 @@ git reset HEAD
 git clean
 git checkout --
 git cherry-pick
+git stash
 git submodule
 git subtree
 ```
 
+---
+
+## git extensions
+
+Git supports extensions
+
+```bash
+
+git tfs worksing-tree
+
+git flow ...
+
+```
 ---
 
 ## Ammending things
