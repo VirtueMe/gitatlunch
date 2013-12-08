@@ -44,6 +44,19 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
+      third: {
+        options: {
+          base: 'gitdistributed',
+          middleware: function (connect) {
+            return [
+              mountFolder(connect, '.tmp'),
+              mountFolder(connect, 'gitteam')
+            ];
+          },
+          open: true,
+          livereload: true
+        }
+      },
     },
     copy: {
       first: {
@@ -51,6 +64,10 @@ module.exports = function (grunt) {
         dest: 'gitandlunch/'
       },
       second: {
+        src: 'js/*',
+        dest: 'gitdistributed/'
+      },
+      third: {
         src: 'js/*',
         dest: 'gitdistributed/'
       }
@@ -79,6 +96,18 @@ module.exports = function (grunt) {
           open: true
         }
       },
+      mdpress3: {
+        files: [
+          'gitteam.md',
+          'themes/{,*/}*.html',
+          'themes/{,*/}*.css'
+        ],
+        tasks: ['shell:compile3', 'copy:third'],
+        options: {
+          livereload: true,
+          open: true
+        }
+      },
       gitdistributed: {
         files: [
           'gitdistributed/index.html'
@@ -87,7 +116,17 @@ module.exports = function (grunt) {
           livereload: true,
           open: true
         }
+      },
+      gitteam: {
+        files: [
+          'gitteam/index.html'
+        ],
+        options: {
+          livereload: true,
+          open: true
+        }
       }
+
     },
     shell: {
       compile: {
@@ -95,6 +134,9 @@ module.exports = function (grunt) {
       },
       compile2: {
         command : 'mdpress gitdistributed.md -s mytheme'
+      },
+      compile3: {
+        command : 'mdpress gitteam.md -s mytheme'
       }
     }
   });
@@ -114,5 +156,13 @@ module.exports = function (grunt) {
     'connect:second',
     'watch:mdpress2',
     'watch:gitdistributed'
+  ]);
+
+  grunt.registerTask('server3', [
+    'shell:compile3',
+    'copy:third',
+    'connect:third',
+    'watch:mdpress3',
+    'watch:gitteam'
   ]);
 };
