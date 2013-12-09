@@ -8,7 +8,7 @@ title: Git at lunch
 
 <br>
 
-## At lunch - distributed
+## At lunch - Teamwork
 <br>
 
 > Benny Thomas @ Sandviks AS
@@ -25,8 +25,10 @@ title: Git at lunch
 
 ## Afterwards
 
+* strategies
 * learn to use branches
 * merge your branches
 * rebase to single commit before pushing
+
 ---
 
